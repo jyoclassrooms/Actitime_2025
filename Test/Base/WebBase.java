@@ -31,7 +31,7 @@ public class WebBase
 		 }
 		 
 		 driver.get(url);
-		 driver.findElement(By.name(""))
+		 driver.findElement(By.name(""));
 		 
 	 }
 
