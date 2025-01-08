@@ -7,16 +7,19 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.GeckoDriverInfo;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import pageobject.Login_Page;
 
 public class WebBase 
 {
 	 WebDriver driver=null;
-	 String browser="chrome";
-	 String url="http://127.0.0.1/login.do";
+	 
+	 
+	 @Parameters({"browser","url","username","password"})
+	
 	 @BeforeMethod
-	 public void login()
+	 public void login(String browser,String url,String username,String password)
 	 {
 		 switch( browser)
 		 {
@@ -34,8 +37,8 @@ public class WebBase
 		 
 		 driver.get(url);
 		 Login_Page login=new Login_Page(driver);
-		 login.get_username().sendKeys("admin");
-		 login.get_password().sendKeys("manager");
+		 login.get_username().sendKeys(username);
+		 login.get_password().sendKeys(password);
 		 login.get_login().click();
 	 }
 
