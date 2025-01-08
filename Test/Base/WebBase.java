@@ -8,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.GeckoDriverInfo;
 import org.testng.annotations.BeforeMethod;
 
+import pageobject.Login_Page;
+
 public class WebBase 
 {
 	 WebDriver driver=null;
@@ -31,8 +33,10 @@ public class WebBase
 		 }
 		 
 		 driver.get(url);
-		 driver.findElement(By.name(""));
-		 
+		 Login_Page login=new Login_Page(driver);
+		 login.get_username().sendKeys("admin");
+		 login.get_password().sendKeys("manager");
+		 login.get_login().click();
 	 }
 
 }
